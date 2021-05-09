@@ -5,6 +5,7 @@
 * [GSystem](#gsystem)
 * [GDataPool](#gdatapool)
 * [GEventPool](#geventpool)
+* [GInvoke](#ginvoke)
 * [Singleton](#singleton)
 
 ## Installation
@@ -67,6 +68,17 @@ GEventPool.AddListener<SomeEvent>(some =>
 {
     Debug.Log($"Integer: {some.SomeInteger}; String: {some.SomeString}");
 });
+```
+
+## GInvoke
+> An easier way to use coroutine
+> 
+This will print the message to the console after 5 seconds
+```csharp
+GInvoke.Instance.Delay(() =>
+{
+    Debug.Log("Hello, World!");
+}, 5f);
 ```
 
 ## Singleton
