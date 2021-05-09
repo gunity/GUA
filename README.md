@@ -5,6 +5,7 @@
 * [GSystem](#gsystem)
 * [GDataPool](#gdatapool)
 * [GEventPool](#geventpool)
+* [Singleton](#singleton)
 
 ## Installation
 This repository can be installed as unity module directly from Git URL
@@ -66,4 +67,14 @@ GEventPool.AddListener<SomeEvent>(some =>
 {
     Debug.Log($"Integer: {some.SomeInteger}; String: {some.SomeString}");
 });
+```
+
+## Singleton
+To make a singleton, you need this
+```csharp
+public class SomeMonobeh : MonoBehaviour
+```
+Replace with this
+```csharp
+public class SomeMonobeh : Singleton<SomeMonobeh>
 ```
