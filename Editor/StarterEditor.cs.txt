@@ -1,0 +1,30 @@
+using UnityEditor;
+using UnityEngine;
+using #STARTER_NAMESPACE#;
+
+namespace #NAMESPACE#
+{
+    [CustomEditor(typeof(#STARTER_NAME#))]
+    public class #SCRIPT_NAME# : UnityEditor.Editor
+    {
+        private #STARTER_NAME# _target;
+        
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+            
+            _target = target as #STARTER_NAME#;
+            if(_target == null) return;
+            
+            GUILayout.Space(20);
+            
+            if (GUILayout.Button("Reset all saved data", GUILayout.Height(30)))
+            {
+                PlayerPrefs.DeleteAll();
+                Debug.Log("All saved data has been discarded.");
+            }
+            
+            // Some functional
+        }
+    }
+}

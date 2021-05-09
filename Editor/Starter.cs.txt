@@ -1,0 +1,44 @@
+using GUA.Invoke;
+using GUA.System;
+using UnityEngine;
+
+namespace #NAMESPACE#
+{
+    public class #SCRIPT_NAME# : MonoBehaviour
+    {
+        private readonly GSystem _system = new GSystem();
+
+        // [Header("Emitters")]
+        // [SerializeField] private SomeEmitter someEmitter;
+
+        // [Header("Data")] 
+        // [SerializeField] private SomeData someData;
+
+        private void Start()
+        {
+            Application.targetFrameRate = 60;
+            InitializeAssistants();
+        
+            // GDataPool.Set(someEmitter);
+        
+            // GDataPool.Set(someData);
+
+            // _system.Add(new SomeSystem());
+      
+            _system.Initialize();
+        }
+
+        private void InitializeAssistants()
+        {
+            _ = GInvoke.Instance;
+        }
+
+        private void Update() => _system.Run();
+
+        private void FixedUpdate() => _system.FixedRun();
+
+        private void OnApplicationQuit() => _system.ApplicationQuit();
+
+        private void OnDestroy() => _system.Destroy();
+    }
+}

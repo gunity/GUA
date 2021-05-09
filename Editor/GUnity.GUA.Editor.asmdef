@@ -1,0 +1,18 @@
+{
+    "name": "GUnity.GUA.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:31438d7adbbd846d280ef7b8573c0412"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

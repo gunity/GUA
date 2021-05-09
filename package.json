@@ -1,0 +1,11 @@
+{
+  "name": "com.gunity.gua",
+  "version": "1.0.0",
+  "displayName": "GUnityArchitecture",
+  "description": "A simple architecture that is designed to use some of the programming patterns.",
+  "author": {
+    "name": "GUnity",
+    "telegram": "http://t.me/gunity_dev",
+    "github": "https://github.com/gunity"
+  }
+}
