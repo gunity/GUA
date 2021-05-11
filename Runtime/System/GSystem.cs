@@ -13,18 +13,9 @@ namespace GUA.System
 
         public void Add(ISystem system)
         {
-            switch (system)
-            {
-                case IStartSystem startSystem:
-                    _startSystems.Add(startSystem);
-                    break;
-                case IRunSystem runSystem:
-                    _runSystems.Add(runSystem);
-                    break;
-                case IFixedRunSystem fixedRunSystem:
-                    _fixedRunSystems.Add(fixedRunSystem);
-                    break;
-            }
+            if (system is IStartSystem startSystem) _startSystems.Add(startSystem);
+            if (system is IRunSystem runSystem) _runSystems.Add(runSystem);
+            if (system is IFixedRunSystem fixedRunSystem) _fixedRunSystems.Add(fixedRunSystem);
         }
 
         public void Initialize()
