@@ -36,7 +36,17 @@ namespace GUA.Invoke
         {
             if (delayStruct.UnscaledTime) yield return new WaitForSecondsRealtime(delayStruct.DelayTime);
             else yield return new WaitForSeconds(delayStruct.DelayTime);
-            delayStruct.UnityAction.Invoke();
+            if(delayStruct.UnityAction.Target == null)
+                yield break;
+            try
+            {
+                delayStruct.UnityAction.Invoke();
+            }
+            catch
+            {
+                // ignored
+            }
+
             yield return true;
         }
 
@@ -56,8 +66,17 @@ namespace GUA.Invoke
             for (var index = 0; index < repeatStruct.RepeatCount; index++)
             {
                 yield return new WaitForSeconds(repeatStruct.RepeatTime / repeatStruct.RepeatCount);
-                if(index % 2 == 0) repeatStruct.UnityAction1.Invoke();
-                else repeatStruct.UnityAction2.Invoke();
+                if(repeatStruct.UnityAction1.Target == null || repeatStruct.UnityAction2.Target == null)
+                    yield break;
+                try
+                {
+                    if(index % 2 == 0) repeatStruct.UnityAction1.Invoke();
+                    else repeatStruct.UnityAction2.Invoke();
+                }
+                catch
+                {
+                    // ignored
+                }
             }
         }
         
