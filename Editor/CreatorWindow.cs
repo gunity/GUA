@@ -57,9 +57,12 @@ namespace GUA.Editor
                 if (_createFolders)
                 {
                     GUILayout.Label($"{_selectedPath}/{(_createScriptsFolder ? "Scripts/" : string.Empty)}Data");
-                    GUILayout.Label($"{_selectedPath}/{(_createScriptsFolder ? "Scripts/" : string.Empty)}Components");
+                    GUILayout.Label($"{_selectedPath}/{(_createScriptsFolder ? "Scripts/" : string.Empty)}Emitters");
+                    GUILayout.Label($"{_selectedPath}/{(_createScriptsFolder ? "Scripts/" : string.Empty)}Information");
                     GUILayout.Label($"{_selectedPath}/{(_createScriptsFolder ? "Scripts/" : string.Empty)}Managers");
                     GUILayout.Label($"{_selectedPath}/{(_createScriptsFolder ? "Scripts/" : string.Empty)}Systems");
+                    GUILayout.Label($"{_selectedPath}/{(_createScriptsFolder ? "Scripts/" : string.Empty)}Events");
+                    GUILayout.Label($"{_selectedPath}/{(_createScriptsFolder ? "Scripts/" : string.Empty)}Structs");
                 }
             }
 
@@ -80,9 +83,12 @@ namespace GUA.Editor
             {
                 CreateEmptyFolder($"{_selectedPath}/{(_createScriptsFolder ? "Scripts/" : string.Empty)}Editor");
                 CreateEmptyFolder($"{_selectedPath}/{(_createScriptsFolder ? "Scripts/" : string.Empty)}Data");
-                CreateEmptyFolder($"{_selectedPath}/{(_createScriptsFolder ? "Scripts/" : string.Empty)}Components");
+                CreateEmptyFolder($"{_selectedPath}/{(_createScriptsFolder ? "Scripts/" : string.Empty)}Emitters");
+                CreateEmptyFolder($"{_selectedPath}/{(_createScriptsFolder ? "Scripts/" : string.Empty)}Information");
                 CreateEmptyFolder($"{_selectedPath}/{(_createScriptsFolder ? "Scripts/" : string.Empty)}Managers");
                 CreateEmptyFolder($"{_selectedPath}/{(_createScriptsFolder ? "Scripts/" : string.Empty)}Systems");
+                CreateEmptyFolder($"{_selectedPath}/{(_createScriptsFolder ? "Scripts/" : string.Empty)}Events");
+                CreateEmptyFolder($"{_selectedPath}/{(_createScriptsFolder ? "Scripts/" : string.Empty)}Structs");
                 CreateEmptyFolder($"{_selectedPath}/{(_createScriptsFolder ? "Scripts/" : string.Empty)}Starters");
             }
 

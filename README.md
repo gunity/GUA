@@ -15,39 +15,63 @@ https://github.com/gunity/GUA.git
 ```
 
 ## GSystem
-User class should implements `IStartSystem`, `IRunSystem`, `IFixedRunSystem` interfaces:
-```csharp
-public class SomeSystem : IStartSystem, IRunSystem, IFixedRunSystem
+A single-entry principle is used.
+The whole code is divided into parts - systems.
+The system must be inherited from the `MonoSystem`.
+```c#
+public class SomeSystem : MonoSystem
 {
-    public void Start() { }
-
-    public void Run() { }
-
-    public void FixedRun() { }
+    public SomeSystem(bool enabled) : base(enabled) { }
 }
 ```
+In the starter file you must add the system.
+```c#
+_system.Add(new SomeSystem(true));
+```
+where `true` - is whether the system is initially enabled.
+```c#
+public class SomeSystem : MonoSystem
+{
+    public SomeSystem(bool enabled) : base(enabled)
+    {
+        // is performed when system initialization
+    }
+    
+    protected override void Start()
+    {
+        // is performed once when the system is switched on
+    }
 
+    public override void Run()
+    {
+        // analogue Update
+    }
+
+    public override void FixedRun()
+    {
+        // analogue FixedUpdate
+    }
+}
+```
 ## GDataPool
-> Dependency injection
 
 Create a unique type field in the starter-file
-```csharp
+```c#
 [SerializeField] private SomeData someData;
 ```
 Injection
-```csharp
+```c#
 GDataPool.Set(someData);
 ```
 Getting dependency
-```csharp
+```c#
 private readonly SomeData someData = GDataPool.Get<SomeData>();
 ```
 
 ## GEventPool
-> Observer
 
 Create structure-event
-```csharp
+```c#
 public struct SomeEvent
 {
     public int SomeInteger;
@@ -55,7 +79,7 @@ public struct SomeEvent
 }
 ```
 Send message
-```csharp
+```c#
 GEventPool.SendMessage(new SomeEvent
 {
     SomeInteger = 123,
@@ -63,7 +87,7 @@ GEventPool.SendMessage(new SomeEvent
 });
 ```
 Add message listener
-```csharp
+```c#
 GEventPool.AddListener<SomeEvent>(some =>
 {
     Debug.Log($"Integer: {some.SomeInteger}; String: {some.SomeString}");
@@ -74,19 +98,9 @@ GEventPool.AddListener<SomeEvent>(some =>
 > An easier way to use coroutine
 > 
 This will print the message to the console after 5 seconds
-```csharp
+```c#
 GInvoke.Instance.Delay(() =>
 {
     Debug.Log("Hello, World!");
 }, 5f);
-```
-
-## Singleton
-To make a singleton, you need this
-```csharp
-public class SomeMonobeh : MonoBehaviour
-```
-Replace with this
-```csharp
-public class SomeMonobeh : Singleton<SomeMonobeh>
 ```

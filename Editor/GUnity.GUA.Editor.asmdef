@@ -2,7 +2,8 @@
     "name": "GUnity.GUA.Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:31438d7adbbd846d280ef7b8573c0412"
+        "GUID:31438d7adbbd846d280ef7b8573c0412",
+        "GUID:e0ea345c19a8f49c6bc63d75aeae8b98"
     ],
     "includePlatforms": [
         "Editor"

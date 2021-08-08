@@ -1,4 +1,3 @@
-using GUA.Invoke;
 using GUA.System;
 using UnityEngine;
 
@@ -24,21 +23,19 @@ namespace #NAMESPACE#
             // GDataPool.Set(someData);
 
             // _system.Add(new SomeSystem());
-      
-            _system.Initialize();
         }
 
         private void InitializeAssistants()
         {
-            _ = GInvoke.Instance;
+            // initialize assistance
         }
 
         private void Update() => _system.Run();
 
         private void FixedUpdate() => _system.FixedRun();
 
-        private void OnApplicationQuit() => _system.ApplicationQuit();
+        private void OnApplicationQuit() => GSystem.ClearSystem();
 
-        private void OnDestroy() => _system.Destroy();
+        private void OnDestroy() => GSystem.ClearSystem();
     }
 }

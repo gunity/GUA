@@ -1,53 +1,38 @@
 using System.Collections.Generic;
 using GUA.Data;
 using GUA.Event;
-using GUA.Invoke;
 
 namespace GUA.System
 {
     public sealed class GSystem
     {
-        private readonly List<IFixedRunSystem> _fixedRunSystems = new List<IFixedRunSystem>();
-        private readonly List<IRunSystem> _runSystems = new List<IRunSystem>();
-        private readonly List<IStartSystem> _startSystems = new List<IStartSystem>();
+        private readonly List<MonoSystem> _systems = new List<MonoSystem>();
 
-        public void Add(ISystem system)
+        public void Add(MonoSystem system)
         {
-            if (system is IStartSystem startSystem) _startSystems.Add(startSystem);
-            if (system is IRunSystem runSystem) _runSystems.Add(runSystem);
-            if (system is IFixedRunSystem fixedRunSystem) _fixedRunSystems.Add(fixedRunSystem);
-        }
-
-        public void Initialize()
-        {
-            _startSystems.ForEach(system => system.Start());
+            _systems.Add(system);
         }
 
         public void Run()
         {
-            _runSystems.ForEach(system => system.Run());
+            _systems.ForEach(system =>
+            {
+                if (system.Enabled) system.Run();
+            });
         }
 
         public void FixedRun()
         {
-            _fixedRunSystems.ForEach(system => system.FixedRun());
+            _systems.ForEach(system =>
+            {
+                if (system.Enabled) system.FixedRun();
+            });
         }
 
-        public void Destroy()
-        {
-            ClearSystem();
-        }
-
-        public void ApplicationQuit()
-        {
-            ClearSystem(true);
-        }
-
-        private static void ClearSystem(bool fullClear = false)
+        public static void ClearSystem()
         {
             GDataPool.Clear();
             GEventPool.Clear();
-            if (fullClear) GInvoke.Instance.Clear();
         }
     }
 }
