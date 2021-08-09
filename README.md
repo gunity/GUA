@@ -1,5 +1,9 @@
 # GUA
-> Simple architecture that is designed to use some of the programming patterns
+A simple package, following the rules of which you can write
+a more supportable and extensible application. GUA uses the principles
+of single entry into the application, independence of its systems, variability.
+
+! the manual is incomplete at this point, sorry. I will correct it soon :)
 
 * [Installation](#installation)
 * [GSystem](#gsystem)
@@ -34,12 +38,12 @@ public class SomeSystem : MonoSystem
 {
     public SomeSystem(bool enabled) : base(enabled)
     {
-        // is performed when system initialization
+        // will be executed once when the system is initialized
     }
     
     protected override void Start()
     {
-        // is performed once when the system is switched on
+        // will be executed once on the next frame after the first enabling of the system
     }
 
     public override void Run()

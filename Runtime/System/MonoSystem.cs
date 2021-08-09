@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using UnityEngine;
 
 namespace GUA.System
 {
@@ -23,11 +24,12 @@ namespace GUA.System
         protected MonoSystem(bool enabled)
         {
             Enabled = enabled;
-            Startup();
         }
 
-        private void Startup()
+        private async void Startup()
         {
+            await Task.Yield();
+            
             if (!Enabled) return;
             if (_initialized) return;
             
