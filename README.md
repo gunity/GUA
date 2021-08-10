@@ -17,6 +17,7 @@ This repository can be installed as unity module directly from Git URL
 ```
 https://github.com/gunity/GUA.git
 ```
+![Installation](https://github.com/gunity/GUA/blob/main/Content/package_manager.gif)
 
 ## GSystem
 A single-entry principle is used.
