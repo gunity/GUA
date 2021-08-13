@@ -17,8 +17,9 @@ of single entry into the application, independence of its systems, variability.
 
 ## Installation
 This repository can be installed as unity module directly from Git URL
-
->https://github.com/gunity/GUA.git
+```text
+https://github.com/gunity/GUA.git
+```
 
 ![Installation](https://github.com/gunity/GUA/blob/main/Content/package_manager.gif)
 
@@ -106,7 +107,9 @@ GEventPool.SendMessage(new SomeEvent
 });
 ```
 See console
-> Integer: 123 String: string
+```text
+Integer: 123 String: string
+```
 
 ## GInvoke
 
