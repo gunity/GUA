@@ -10,7 +10,7 @@ of single entry into the application, independence of its systems, variability.
 * [GDataPool](#gdatapool)
 * [GEventPool](#geventpool)
 * [GInvoke](#ginvoke)
-* [Singleton](#singleton)
+* [Extensions](#extensions)
 
 ## Installation
 This repository can be installed as unity module directly from Git URL
@@ -60,6 +60,8 @@ public class SomeSystem : MonoSystem
 ```
 ## GDataPool
 
+Date Injection. A container that stores data by unique types.
+
 Create a unique type field in the starter-file
 ```c#
 [SerializeField] private SomeData someData;
@@ -68,12 +70,14 @@ Injection
 ```c#
 GDataPool.Set(someData);
 ```
-Getting dependency
+Getting data
 ```c#
 private readonly SomeData someData = GDataPool.Get<SomeData>();
 ```
 
 ## GEventPool
+
+Systems can communicate with each other with event structures.
 
 Create structure-event
 ```c#
@@ -83,6 +87,13 @@ public struct SomeEvent
     public string SomeString;
 }
 ```
+Add message listener
+```c#
+GEventPool.AddListener<SomeEvent>(some =>
+{
+    Debug.Log($"Integer: {some.SomeInteger}; String: {some.SomeString}");
+});
+```
 Send message
 ```c#
 GEventPool.SendMessage(new SomeEvent
@@ -91,21 +102,11 @@ GEventPool.SendMessage(new SomeEvent
     SomeString = "string"
 });
 ```
-Add message listener
-```c#
-GEventPool.AddListener<SomeEvent>(some =>
-{
-    Debug.Log($"Integer: {some.SomeInteger}; String: {some.SomeString}");
-});
-```
 
 ## GInvoke
-> An easier way to use coroutine
-> 
-This will print the message to the console after 5 seconds
-```c#
-GInvoke.Instance.Delay(() =>
-{
-    Debug.Log("Hello, World!");
-}, 5f);
-```
+
+coming soon
+
+## Extensions
+
+coming soon
