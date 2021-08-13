@@ -8,7 +8,7 @@ namespace GUA.Event
     {
         private static readonly List<EventStruct> GEvents = new List<EventStruct>();
 
-        public static void SendMessage(object gEvent)
+        public static void SendMessage<T>(T gEvent) where T : struct
         {
             var any = GEvents.Any(e =>
             {
