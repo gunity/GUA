@@ -1,10 +1,6 @@
 # GUA
-A simple package, following the rules of which you can write
-a more supportable and extensible application. GUA uses the principles
-of single entry into the application, independence of its systems, variability.
 
-! the manual is incomplete at this point, sorry. I will correct it soon :)
-
+* [About](#about)
 * [Installation](#installation)
 * [GSystem](#gsystem)
 * [GDataPool](#gdatapool)
@@ -12,11 +8,18 @@ of single entry into the application, independence of its systems, variability.
 * [GInvoke](#ginvoke)
 * [Extensions](#extensions)
 
+> the manual is incomplete at this moment, sorry. I will correct it soon :)
+
+## About
+A simple package, following the rules of which you can write
+a more supportable and extensible application. GUA uses the principles
+of single entry into the application, independence of its systems, variability.
+
 ## Installation
 This repository can be installed as unity module directly from Git URL
-```
-https://github.com/gunity/GUA.git
-```
+
+>https://github.com/gunity/GUA.git
+
 ![Installation](https://github.com/gunity/GUA/blob/main/Content/package_manager.gif)
 
 ## GSystem
@@ -33,7 +36,7 @@ In the starter file you must add the system.
 ```c#
 _system.Add(new SomeSystem(true));
 ```
-where `true` - is whether the system is initially enabled.
+where `true` - the system is initially enabled.
 ```c#
 public class SomeSystem : MonoSystem
 {
@@ -79,7 +82,7 @@ private readonly SomeData someData = GDataPool.Get<SomeData>();
 
 Systems can communicate with each other with event structures.
 
-Create structure-event
+Create event-structure
 ```c#
 public struct SomeEvent
 {
@@ -102,6 +105,8 @@ GEventPool.SendMessage(new SomeEvent
     SomeString = "string"
 });
 ```
+See console
+> Integer: 123 String: string
 
 ## GInvoke
 
