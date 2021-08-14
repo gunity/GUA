@@ -11,7 +11,14 @@ namespace GUA.Invoke
         public async void Delay(UnityAction unityAction, int milliseconds)
         {
             _cancellationTokenSource = new CancellationTokenSource();
-            await Task.Delay(milliseconds, _cancellationTokenSource.Token);
+            try
+            {
+                await Task.Delay(milliseconds, _cancellationTokenSource.Token);
+            }
+            catch
+            {
+                return;
+            }
             unityAction.Invoke();
         }
 
