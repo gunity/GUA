@@ -16,16 +16,17 @@ namespace GUA.State
             {
                 var state = States[type];
                 state.StateType = stateType;
-                
+
+                if (state.ExecutableObject == null) return;
                 SetExecutable(state.ExecutableObject);
-                
-                return;
             }
+            else
+            {
+                States.Add(type, new StateValue(stateType, mainExecutableObject));
             
-            States.Add(type, new StateValue(stateType, mainExecutableObject));
-            
-            if (mainExecutableObject == null) return;
-            SetExecutable(mainExecutableObject);
+                if (mainExecutableObject == null) return;
+                SetExecutable(mainExecutableObject);
+            }
         }
 
         public static T GetState<T>() where T : Enum
