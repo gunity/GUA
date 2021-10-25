@@ -8,12 +8,9 @@ namespace GUA.System
         public bool Enabled
         {
             get => _enabled;
-            protected set 
+            private set 
             {
                 _enabled = value;
-#if UNITY_EDITOR
-                Debug.Log($"<color=green>GSystem:</color> system <b>{GetType()}</b> turned {(Enabled ? "<color=green>on" : "<color=red>off")}</color>");
-#endif
                 Startup();
             }
         }

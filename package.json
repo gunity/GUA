@@ -1,6 +1,6 @@
 {
   "name": "com.gunity.gua",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "displayName": "GUnityArchitecture",
   "description": "A simple architecture that is designed to use some of the programming patterns.",
   "author": {
