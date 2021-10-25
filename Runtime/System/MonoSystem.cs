@@ -8,7 +8,7 @@ namespace GUA.System
         public bool Enabled
         {
             get => _enabled;
-            private set 
+            protected set 
             {
                 _enabled = value;
                 Startup();
